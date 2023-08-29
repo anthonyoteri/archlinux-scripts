@@ -68,6 +68,27 @@ yay --noconfirm -S \
     xdg-desktop-portal-gtk \
     xfce4-power-manager
 
+# -----------------------------------------------------------------------------
+# Install pywal to extract colors from wallpaper
+# -----------------------------------------------------------------------------
+
+if [ -f /usr/bin/wal ]; then
+    echo "pywal already installed"
+else
+    yay --noconfirm -S pywal
+fi
+
+# -----------------------------------------------------------------------------
+# Install Hyprlan packages
+# -----------------------------------------------------------------------------
+
+yay --noconfirm -S \
+    grim \
+    slurp \
+    swaylock \
+    swww \
+    waybar
+
 echo "Done!"
 
                                          
