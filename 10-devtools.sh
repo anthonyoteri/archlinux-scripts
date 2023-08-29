@@ -54,7 +54,4 @@ rustup install stable
 # Install python interpreters
 # -----------------------------------------------------------------------------
 
-pyenv install 2.7
-pyenv install 3.6
-pyenv install 3.8
-pyenv install 3.12
+pyenv install 3.11
