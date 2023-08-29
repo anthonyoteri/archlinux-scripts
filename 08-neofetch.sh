@@ -30,7 +30,15 @@ done
 # Install exa
 # -----------------------------------------------------------------------------
 
-yay --noconfirm -S neofetch
+yay --noconfirm -S \
+    catimg \
+    chafa \
+    feh \
+    imagemagick \
+    libcaca \
+    nitrogen \
+    neofetch \
+    w3m
 
 echo "Done!"
 
