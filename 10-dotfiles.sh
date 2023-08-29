@@ -29,11 +29,11 @@ done
 # -----------------------------------------------------------------------------
 # Install dotfiles 
 # -----------------------------------------------------------------------------
+GIT="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 git clone --bare https://github.com/anthonyoteri/dotfiles.git $HOME/.dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-config checkout
-config config --local status.showUntrackedFiles no
+$GIT checkout -f
+$GIT config --local status.showUntrackedFiles no
 
 echo "Done!"
 
