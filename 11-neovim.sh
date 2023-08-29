@@ -32,4 +32,6 @@ done
 
 yay --noconfirm -S neovim
 
+nvim +PlugInstall +PlugClean +qa
+
 echo "Done!"
