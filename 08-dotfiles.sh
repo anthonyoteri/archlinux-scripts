@@ -31,8 +31,10 @@ done
 # -----------------------------------------------------------------------------
 GIT="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-git clone --bare https://github.com/anthonyoteri/dotfiles.git $HOME/.dotfiles --recursive
+git clone --bare https://github.com/anthonyoteri/dotfiles.git $HOME/.dotfiles
 $GIT checkout -f
+$GIT submodule init
+$GIT submodule update
 $GIT config --local status.showUntrackedFiles no
 
 echo "Done!"
