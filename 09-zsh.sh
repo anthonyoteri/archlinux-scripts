@@ -36,7 +36,7 @@ yay --noconfirm -S zsh
 # Install the oh-my-zsh script
 # -----------------------------------------------------------------------------
 
-yay --noconfirm -S oh-my-zsh-git
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Done!"
 
