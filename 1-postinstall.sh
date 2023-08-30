@@ -124,18 +124,18 @@ OMZ_THEMES_DIR=${HOME}/.oh-my-zsh/custom/themes
 
 mkdir -p ${OMZ_PLUGIN_DIR} ${OMZ_THEMES_DIR}
 
-test -d ${OMZ_PLUGINS_DIR}/zsh-autosuggestions || \
+test ! -d ${OMZ_PLUGINS_DIR}/zsh-autosuggestions && \
     bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-autosuggestions"
 
-test -d ${OMZ_PLUGINS_DIR}/zsh-completions || \
+test ! -d ${OMZ_PLUGINS_DIR}/zsh-completions && \
     bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-completions"
 
-test -d ${OMZ_PLUGINS_DIR}/zsh-syntax-hignlighting || \
+test ! -d ${OMZ_PLUGINS_DIR}/zsh-syntax-hignlighting && \
     bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-syntax-highlighting"
 
-test -d ${OMZ_THEMES_DIR}/powerlevel10k || \
+test ! -d ${OMZ_THEMES_DIR}/powerlevel10k && \
     bash -c "cd ${OMZ_THEMES_DIR} && git clone https://github.com/romkatv/powerlevel10k.git"
-    
+
 # -----------------------------------------------------------------------------
 # Install neofetch and it's optional dependencies
 # -----------------------------------------------------------------------------
