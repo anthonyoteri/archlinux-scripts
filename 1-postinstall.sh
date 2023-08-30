@@ -43,7 +43,7 @@ done
 # -----------------------------------------------------------------------------
 
 while true; do
-    read -p "Swap with zram (Y/n): " yn
+    read -p "Install zram (Y/n): " yn
     case $yn in
         [Yy]* )
             WITH_ZRAM=true
@@ -187,7 +187,7 @@ while true; do
     esac
 done
 while true; do
-    read -p "Install Gnome Desktop specific Apps (Y/n): " yn
+    read -p "Install Gnome Desktop specific apps (Y/n): " yn
     case $yn in
         [Yy]* )
             WITH_GNOME_APPS=true
@@ -199,7 +199,7 @@ while true; do
     esac
 done
 while true; do
-    read -p "Install Hyprland specific Apps (Y/n): " yn
+    read -p "Install Hyprland specific apps (Y/n): " yn
     case $yn in
         [Yy]* )
             WITH_HYPR_APPS=true
@@ -211,7 +211,7 @@ while true; do
     esac
 done
 while true; do
-    read -p "Install window manager specific Apps (Y/n): " yn
+    read -p "Install window manager specific apps (Y/n): " yn
     case $yn in
         [Yy]* )
             WITH_WM_APPS=true
@@ -230,6 +230,18 @@ while true; do
         break;;
         [Nn]* )
             WITH_FLATPAK=
+        break;;
+        * )  echo "Please answer yes or no.";;
+    esac
+done
+while true; do
+    read -p "Install local applications (Y/n): " yn
+    case $yn in
+        [Yy]* )
+            WITH_LOCAL_APPS=true
+        break;;
+        [Nn]* )
+            WITH_LOCAL_APPS=
         break;;
         * )  echo "Please answer yes or no.";;
     esac
@@ -588,6 +600,20 @@ fi
 
 if [ ! -z "${WITH_FLATPAK}" ]; then
     yay ${YAY_OPTS} -S flatpak
+fi
+
+# -----------------------------------------------------------------------------
+# Install Local Applications
+# -----------------------------------------------------------------------------
+
+if [ ! -z "${WITH_LOCAL_APPS}" ]; then
+    mkdir -p -m 0700 ${HOME}/.local/bin 
+
+    HYDROXIDE_VER=1.0.2
+    wget -O ${HOME}/.local/bin/hydroxide_${HYDROXIDE_VER}_amd64.AppImage \
+        https://github.com/anthonyoteri/hydroxide/releases/download/v${HYDROXIDE_VER}/hydroxide_${HYDROXIDE_VER}_amd64.AppImage
+    chmod +x ${HOME}/.local/bin/hydroxide_${HYDROXIDE_VER}_amd64.AppImage
+    ln -sf ${HOME}/.local/bin/hydroxide_${HYDROXIDE_VER}_amd64.AppImage ${HOME}/.local/bin/hydroxide
 fi
 
 # -----------------------------------------------------------------------------
