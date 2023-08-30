@@ -572,9 +572,14 @@ fi
 # FIN!
 # -----------------------------------------------------------------------------
 
-echo "########################################################################"
-echo "# Arch linux postinstall script is now complete.                       #"
-echo "#                                                                      #"
-echo "# You may need to reboot for the changes to take effect.               #"
-echo "########################################################################"
-echo
+if [ ! -z "${WITH_ZRAM}" -o ! -z "${WITH_QEMU}" ] ; then
+    echo "####################################################################"
+    echo "#         You must reboot for the changes to take effect           #"
+    echo "####################################################################"
+    echo
+elif [ ! -z "${WITH_DOTFILES}" ]; then
+    echo "####################################################################"
+    echo "#        You must log out for the changes to take effect           #"
+    echo "####################################################################"
+    echo
+fi
