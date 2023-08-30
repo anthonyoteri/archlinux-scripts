@@ -42,5 +42,11 @@ yay --noconfirm -S \
 
 sudo systemctl enable --now docker.service
 
-echo "Done!"
+# -----------------------------------------------------------------------------
+# Add the current user to the docker group
+# -----------------------------------------------------------------------------
+
+sudo usermod -a -G docker $(whoami)
+
+echo "Done! Please log out and back in to use Docker."
 
