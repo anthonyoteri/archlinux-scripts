@@ -119,12 +119,23 @@ sudo chsh -s $(which zsh) $(whoami)
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-mkdir -p ${HOME}/.oh-my-zsh/custom/plugins/
-git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions ${HOME}/.oh-my-zsh/custom/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/romkatv/powerlevel10k.git ${HOME}/.oh-my-zsh/custom/themes/powerlevel10k
+OMZ_PLUGIN_DIR=${HOME}/.oh-my-zsh/custom/plugins
+OMZ_THEMES_DIR=${HOME}/.oh-my-zsh/custom/themes
 
+mkdir -p ${OMZ_PLUGIN_DIR} ${OMZ_THEMES_DIR}
+
+test -d ${OMZ_PLUGINS_DIR}/zsh-autosuggestions || \
+    bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-autosuggestions"
+
+test -d ${OMZ_PLUGINS_DIR}/zsh-completions || \
+    bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-completions"
+
+test -d ${OMZ_PLUGINS_DIR}/zsh-syntax-hignlighting || \
+    bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-syntax-highlighting"
+
+test -d ${OMZ_THEMES_DIR}/powerlevel10k || \
+    bash -c "cd ${OMZ_THEMES_DIR} && git clone https://github.com/romkatv/powerlevel10k.git"
+    
 # -----------------------------------------------------------------------------
 # Install neofetch and it's optional dependencies
 # -----------------------------------------------------------------------------
@@ -274,11 +285,6 @@ while true; do
             
             echo "Starting and enabling docker now"
             sudo systemctl enable --now docker.service
-
-            echo "Configuring libvirtd"
-            LIBVIRTD_CONF=/etc/libvirt/libvirtd.conf
-            sudo sed -i 's/^#unix_sock_group = .*/unix_sock_group = "libvirt"/' "${LIBVIRTD_CONF}"
-            sudo sed -i 's/^#unix_sock_rw_perms = .*"/unix_sock_rw_perms = "0770"/' "${LIBVIRTD_CONF}"
 
             echo "Adding $(whoami) to group docker"
             sudo usermod -a -G docker $(whoami)
