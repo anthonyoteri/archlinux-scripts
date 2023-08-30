@@ -530,6 +530,7 @@ if [ ! -z "${WITH_DESKTOP_APPS}" ]; then
         smbclient \
         socat \
         tcpdump \
+        teams \
         vlc \
         wireguard-tools \
         wireless_tools \
