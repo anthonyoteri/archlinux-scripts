@@ -328,34 +328,40 @@ if [ ! -z "${WITH_ZSH}" ]; then
         zsh-autosuggestions
 
     echo "Setting the login shell for $(whoami) to $(which zsh)"
-    sudo chsh -s $(which zsh) $(whoami)
+    sudo chsh -s $(which zsh) $(whoami) || true
 
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    fi
 
     if [ ! -z "${WITH_DOTFILES}" ]; then
 
         # The dotfiles repository requires that some custom plugins and themes
         # are available.  Skip this if we aren't installing the dotfiles.
 
-        OMZ_PLUGIN_DIR=${HOME}/.oh-my-zsh/custom/plugins
-        OMZ_THEMES_DIR=${HOME}/.oh-my-zsh/custom/themes
+        OMZ_PLUGINS_DIR="${HOME}/.oh-my-zsh/custom/plugins"
+        OMZ_THEMES_DIR="${HOME}/.oh-my-zsh/custom/themes"
 
-        mkdir -p ${OMZ_PLUGIN_DIR} ${OMZ_THEMES_DIR}
+        mkdir -p "${OMZ_PLUGINS_DIR}" "${OMZ_THEMES_DIR}"
 
-        if [ ! -d ${OMZ_PLUGIN_DIR}/zsh-autosubbestions ]; then
-            bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-autosuggestions"
+        if [ ! -d "${OMZ_PLUGINS_DIR}/zsh-autosuggestions" ]; then
+            git clone https://github.com/zsh-users/zsh-autosuggestions \
+                "${OMZ_PLUGINS_DIR}/zsh-autosuggestions" 
         fi
 
-        if [ ! -d ${OMZ_PLUGINS_DIR}/zsh-completions ]; then
-            bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-completions"
+        if [ ! -d "${OMZ_PLUGINS_DIR}/zsh-completions" ]; then
+            git clone https://github.com/zsh-users/zsh-completions \
+                "${OMZ_PLUGINS_DIR}/zsh-completions"
         fi
 
-        if [ ! -d ${OMZ_PLUGINS_DIR}/zsh-syntax-hignlighting ]; then
-            bash -c "cd ${OMZ_PLUGINS_DIR} && git clone https://github.com/zsh-users/zsh-syntax-highlighting"
+        if [ ! -d "${OMZ_PLUGINS_DIR}/zsh-syntax-highlighting" ]; then
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting \
+                "${OMZ_PLUGINS_DIR}/zsh-syntax-highlighting"
         fi
 
-        if [ ! -d ${OMZ_THEMES_DIR}/powerlevel10k ]; then
-            bash -c "cd ${OMZ_THEMES_DIR} && git clone https://github.com/romkatv/powerlevel10k.git"
+        if [ ! -d "${OMZ_THEMES_DIR}/powerlevel10k" ]; then
+            git clone https://github.com/romkatv/powerlevel10k \
+                "${OMZ_THEMES_DIR}/powerlevel10k"
         fi
     fi
 fi
