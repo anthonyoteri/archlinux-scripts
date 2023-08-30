@@ -526,6 +526,7 @@ if [ ! -z "${WITH_DESKTOP_APPS}" ]; then
         openvpn \
         reflector \
         samba \
+        slack-desktop \
         smbclient \
         socat \
         tcpdump \
