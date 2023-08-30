@@ -525,16 +525,21 @@ if [ ! -z "${WITH_DESKTOP_APPS}" ]; then
         alacritty \
         arp-scan \
         avahi \
+        aws-cli-v2 \
         bacon \
+        bitwarden \
         brave-bin \
         figlet \
         filelight \
         ffmpeg4.4 \
         fping \
         github-cli \
+        gitlab-cli \
         gnupg \
         httpie \
         kitty \
+        kubectl \
+        libreoffice-fresh \
         lnav \
         mpv \
         mtr \
