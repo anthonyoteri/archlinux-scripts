@@ -222,6 +222,18 @@ while true; do
         * )  echo "Please answer yes or no.";;
     esac
 done
+while true; do
+    read -p "Install Flatpak (Y/n): " yn
+    case $yn in
+        [Yy]* )
+            WITH_FLATPAK=true
+        break;;
+        [Nn]* )
+            WITH_FLATPAK=
+        break;;
+        * )  echo "Please answer yes or no.";;
+    esac
+done
 
 # -----------------------------------------------------------------------------
 # Install yay
@@ -550,7 +562,7 @@ if [ ! -z "${WITH_HYPR_APPS}" ]; then
 fi
 
 # -----------------------------------------------------------------------------
-# Optionally install Other Desktop based programs
+# Install Other Desktop based programs
 # -----------------------------------------------------------------------------
 
 if [ ! -z "${WITH_WM_APPS}" ]; then
@@ -566,6 +578,14 @@ if [ ! -z "${WITH_WM_APPS}" ]; then
         thunar \
         xdg-desktop-portal-gtk \
         xfce4-power-manager
+fi
+
+# -----------------------------------------------------------------------------
+# Install Flatpak
+# -----------------------------------------------------------------------------
+
+if [ ! -z "${WITH_FLATPAK}" ]; then
+    yay ${YAY_OPTS} -S flatpak
 fi
 
 # -----------------------------------------------------------------------------
