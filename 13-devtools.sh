@@ -38,8 +38,15 @@ yay --noconfirm -S visual-studio-code-bin
 
 yay --noconfirm -S \
     base-devel \
+    cmake \
     goenv \
+    jdk8-openjdk \
+    jre8-openjdk \
+    jdk11-openjdk \
+    jre17-openjdk \
+    nlohmann-json \
     pyenv \
+    rust-analyzer \
     rustup
 
 echo "Done!"
