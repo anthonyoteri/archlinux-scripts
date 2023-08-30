@@ -100,7 +100,9 @@ yay --noconfirm -S \
     zsh-autosuggestions
 
 yay --noconfirm -S \
-    gnome-shell-extension-dash-to-dock
+    gnome-shell-extension-dash-to-dock \
+    gnome-shell-extension-dash-to-panel \
+    gnome-theme-macos-mojave-meta
 
 echo "Done!"
 
