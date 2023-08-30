@@ -99,5 +99,8 @@ yay --noconfirm -S \
     yt-dlp \
     zsh-autosuggestions
 
+yay --noconfirm -S \
+    gnome-shell-extension-dash-to-dock
+
 echo "Done!"
 
