@@ -460,7 +460,8 @@ if [ ! -z "${WITH_DEVTOOLS}" ]; then
         nodejs \
         python \
         rust-analyzer \
-        rust
+        rust \
+        visual-studio-code-bin
 fi
 
 
@@ -539,6 +540,7 @@ if [ ! -z "${WITH_DESKTOP_APPS}" ]; then
         httpie \
         kitty \
         kubectl \
+        lazydocker \
         libreoffice-fresh \
         lnav \
         mpv \
