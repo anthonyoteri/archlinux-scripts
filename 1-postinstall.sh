@@ -199,6 +199,19 @@ while true; do
     esac
 done
 while true; do
+    read -p "Install KDE/Plasma specific apps (Y/n): " yn
+    case $yn in
+        [Yy]* )
+            WITH_PLASMA_APPS=true
+        break;;
+        [Nn]* )
+            WITH_PLASMA_APPS=
+        break;;
+        * )  echo "Please answer yes or no.";;
+    esac
+done
+
+while true; do
     read -p "Install Hyprland specific apps (Y/n): " yn
     case $yn in
         [Yy]* )
@@ -563,6 +576,17 @@ if [ ! -z "${WITH_DESKTOP_APPS}" ]; then
         wget \
         yamllint \
         yt-dlp
+fi
+
+# -----------------------------------------------------------------------------
+# Optionally install KDE / Plasma based programs
+# -----------------------------------------------------------------------------
+
+if [ ! -z "${WITH_PLASMA_APPS}" ]; then
+    yay ${YAY_OPTS} -S \
+        kde-applications \
+        plasma-settings \
+        plasma-wayland-protocols
 fi
 
 # -----------------------------------------------------------------------------
