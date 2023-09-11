@@ -595,6 +595,7 @@ fi
 
 if [ ! -z "${WITH_GNOME_APPS}" ]; then
     yay ${YAY_OPTS} -S \
+        gnome-extra \
         gnome-shell-extension-dash-to-dock \
         gnome-shell-extension-dash-to-panel
 fi
