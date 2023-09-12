@@ -596,8 +596,13 @@ fi
 if [ ! -z "${WITH_GNOME_APPS}" ]; then
     yay ${YAY_OPTS} -S \
         gnome-extra \
+        gnome-shell-extension-arch-update \
+        gnome-shell-extension-appindicator \
+        gnome-shell-extension-blur-my-shell \
         gnome-shell-extension-dash-to-dock \
-        gnome-shell-extension-dash-to-panel
+        gnome-shell-extension-dash-to-panel \
+        gnome-shell-extension-desktop-icons-ng \
+        gnome-shell-extension-vitals
 fi
 
 # -----------------------------------------------------------------------------
